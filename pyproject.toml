@@ -8,6 +8,8 @@ authors = ["seaung <seaung.c0m7de@protonmail.com>"]
 python = "^3.10"
 Flask = "^2.2.2"
 Flask-JWT-Extended = {extras = ["asymmetric_crypto"], version = "^4.4.4"}
+flask-sqlalchemy = "^3.0.2"
+Flask-WTF = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 

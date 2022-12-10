@@ -4,6 +4,7 @@ from werkzeug.exceptions import HTTPException
 
 
 class APIException(HTTPException):
+    """异常基类"""
     code = 500
     msg = "服务端错误"
     error_code = 10000
@@ -40,3 +41,22 @@ class APIException(HTTPException):
         full_path = str(request.full_path)
         main_path = full_path.split("?")
         return main_path[0]
+
+
+class ParamterException(APIException):
+    code = 400
+    msg = "parameter invalid"
+    error_code = 100400
+
+
+class NotFoundException(APIException):
+    code = 404
+    msg = "not found error"
+    error_code = 100404
+
+
+class SuccessMessage(APIException):
+    code = 201
+    msg = "success OK!"
+    error_code = 100201
+

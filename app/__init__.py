@@ -15,10 +15,19 @@ def register_flask_plugins(app: Flask):
         db.create_all()
 
 
-def create_app() -> Flask:
+def create_app(env="prod") -> Flask:
     app = Flask(__name__)
 
-    app.config.from_object("app.config.prod")
+    app.config["ENV"] = env
+
+    environment = app.config.get("ENV")
+
+    match environment:
+        case "prod":
+            app.config.from_object("app.config.prod")
+        case "dev":
+            app.config.from_object("app.cofnig.dev")
+
 
     register_api_blueprints(app)
     register_flask_plugins(app)
